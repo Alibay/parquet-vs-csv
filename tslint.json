@@ -1,0 +1,7 @@
+{
+  "extends": "@conform/batch.tslint",
+  "rules": {
+    "object-literal-sort-keys": true,
+    "variable-name": true
+  }
+}

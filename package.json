@@ -1,0 +1,38 @@
+{
+  "name": "parquete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "csv2parquet": "node dist/bin/csv2parquet.js",
+    "csv2csv": "node dist/bin/csv2csv.js",
+    "coverage": "NODE_CONFIG_ENV=test TS_NODE_FILES=true nyc mocha 'src/test/unit/**/*.test.ts' --exit",
+    "report": "nyc report --reporter=text --reporter=html",
+    "test": "tsc && NODE_CONFIG_ENV=test mocha --timeout 30000 ./dist/test --recursive -r source-map-support/register --exit",
+    "unit": "NODE_CONFIG_ENV=test TS_NODE_FILES=true mocha -r ts-node/register -r source-map-support/register 'src/test/unit/**/*.test.ts' --exit",
+    "integ": "NODE_CONFIG_ENV=test mocha -r ts-node/register -r source-map-support/register 'src/test/integ/**/*.test.ts' --exit",
+    "lint": "eslint 'src/**/*.ts' --fix",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "prewatch": "rm -rf dist",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/lodash": "^4.14.167",
+    "fast-csv": "^4.3.6",
+    "lodash": "^4.17.20",
+    "parquets": "^0.10.10"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.21",
+    "@types/thrift": "^0.10.10",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
