@@ -14,16 +14,16 @@ const pipeline = promisify(stream.pipeline);
 (async () => {
 
   const input = join(__dirname, './../../data/source.csv');
-  const outputCsv = join(__dirname, './../../data/output.csv');
+  const output = join(__dirname, './../../data/output.parquet');
 
   const apptempts = 10;
 
-  console.log(`Start CSV to CSV, attempts=${apptempts}`);
+  console.log(`Start CSV to PARQUET, attempts=${apptempts}`);
 
-  const result = await benchmark(apptempts, () => csv2parquet(input, outputCsv));
+  const result = await benchmark(apptempts, () => csv2parquet(input, output));
   console.log(formatMessage(result));
 
-  console.log('OUTPUT (bytes)', statSync(outputCsv).size);
+  console.log('OUTPUT (bytes)', statSync(output).size);
 })();
 
 async function csv2parquet(input: string, output: string) {
